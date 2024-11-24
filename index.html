@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>beyond2050</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="icon" href="./img/favicon.ico">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<style>
+			section .center-vertically {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+			}
+		</style>
+
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- タイトル -->
+				<section 
+					data-background-video="./video/Flight Network Video_glitch.mp4" 
+					data-background-video-loop 
+					data-background-video-muted
+					data-preload>
+					<h2>Tokyo Beyond 2050</h2>
+					<p>都市の磁力の可視化と未来への提言</p>
+				</section>
+
+				<!-- ====================== GPCI ====================== -->
+				<!-- GPCI 6分野 -->
+				<section>
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div>
+								<img data-src="./img/gpci2023_cover.png" width="450">
+							</div>
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/gpci2023_six_functions.svg" width="600" alt="gpci2023_six_functions">
+							</div>
+						</div>
+					</section>
+					<!-- 対象指標一覧 -->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img data-src="./img/gpci2023_indicator_list_01.svg" width="600">
+							<img data-src="./img/gpci2023_indicator_list_02.svg" width="600">
+						</div>
+					</section>
+				</section>
+
+				<!-- ====================== 回帰分析 ====================== -->
+				<!-- 相関係数（ヒートマップ） -->
+				<section>
+					<section data-background-color="white">
+						<h6>線形モデル</h6>
+						<p style="font-size: 30pt;">
+							<script type="text/x-mathjax-config">
+								MathJax.Hub.Config({
+									TeX: {
+										Macros: {
+											// Custom macros can be added here
+										}
+									}
+								});
+							</script>
+							\( \text{y} = \theta_0 + \theta_1 \cdot x_1 + \theta_2 \cdot x_2 + \cdots + \theta_n \cdot x_n \)
+						</p>
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="./img/regression_analysis.png" alt="regression_analysis" style="max-height: 30vh;">
+						</div>
+					</section>
+
+					<!-- 外国人居住者数のグラフ -->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="./img/foreign_residents_barh_seaborn.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
+						</div>
+					</section>	
+					
+					<!-- 相関係数-p値の散布図-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px; position: relative;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/coefficient_p-value_residents.png" width="750">
+								<p style="
+									position: absolute; 
+									top: 150px; 
+									left: 300px; 
+									color: white; 
+									background-color: rgba(0, 0, 0, 0.5); 
+									padding: 5px; 
+									border-radius: 5px;
+									font-size: 14px;">
+									相関係数が高く、統計的に有意と考えられる指標の絞り込み
+								</p>
+							</div>
+						</div>
+					</section>
+					
+					<!-- ヒートマップ（相関係数とp値でフィルタリング後）-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/heatmap_coefficient_p-value_residents.png" width="750">
+							</div>
+						</div>
+					</section>
+					<!-- ヒートマップ（多重共線性を排除後）-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/heatmap_exclude_multicollinearity_residents.png" width="750">
+							</div>
+						</div>
+					</section>
+					<!-- ヒートマップ（選別された指標）-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/heatmap_selected_indicators_residents.png" width="750">
+							</div>
+						</div>
+					</section>
+					<!-- 各説明変数の相関係数-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/coef_residents_seaborn.png" height="650">
+							</div>
+						</div>
+					</section>
+					
+					<!-- 外国人訪問者数のグラフ -->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; align-items: center;">
+							<img src="./img/foreign_visitors_barh_seaborn.png" alt="Foreign Residents Bar Chart" style="max-height: 90vh;">
+						</div>
+					</section>	
+					<!-- 各説明変数の相関係数-->
+					<section data-background-color="white">
+						<div style="display: flex; justify-content: center; gap: 20px;">
+							<div style="display: flex; justify-content: center; align-items: center;">
+								<img data-src="./img/coef_visitors.png" height="650">
+							</div>
+						</div>
+					</section>
+									
+					
+					<!-- 対象指標一覧 -->
+					<section data-background-color="white">
+						<p style="font-size: 22pt;">回帰係数が高い15指標（和集合）</p>
+						<table style="font-size: 0.4em; width: 80%; margin: 0 auto; border-collapse: collapse;">
+							<tr>
+								<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">分野</th>
+								<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">指標</th>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #917099;" rowspan="2">経済</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color:rgba(145, 112, 153, 0.5);">賃金水準</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(145, 112, 153, 0.5);">政治・経済・商機のリスクの低さ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #738cac;" rowspan="2">研究・開発</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(115, 140, 172, 0.5);">留学生数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(115, 140, 172, 0.5);">スタートアップ数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #de819a;" rowspan="6">文化・交流</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">アート市場規模</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">観光地の充実度</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">スタジアム数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">ホテル客室数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">ハイクラスホテル客室数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">買い物の魅力</td>
+							</tr>
+							
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #71c2de;" rowspan="2">居住</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(113,194,222,0.5);">メンタルヘルス水準</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(113,194,222,0.5);">小売店舗の多さ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="1">環境</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(156,184,102,0.5);">都市空間の清潔さ</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: #eeaa3d;" rowspan="2">交通・アクセス</td>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(238,170,61,0.5);">国際線直行便就航都市数</td>
+							</tr>
+							<tr>
+								<td style="padding: 5px; border: 1px solid #000; background-color: rgba(238,170,61,0.5);">自動車の移動速度</td>
+							</tr>
+						</table>
+					</section>
+				</section>
+
+				<!-- ====================== マップ ====================== -->
+				<!-- 基礎データ -->
+				<section>
+					<!-- 人口密度（世界） -->
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)" data-transition="fade-out" data-transition-speed="slow">
+						<iframe class="stretch" data-src="./mapbox/pop_world_density/world_pop.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+
+					<!-- 人口密度（日本） -->
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)" data-transition="fade-in" data-transition-speed="slow">
+						<iframe class="stretch" data-src="./mapbox/pop_japan_density/pop_dens_japan.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+									
+					<!-- 人口密度（世界都市） -->
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/pop_global_cities/pop_dens_tyo.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/pop_global_cities/pop_dens_nyc.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/pop_global_cities/pop_dens_lon.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+
+				</section>
+				<!-- 基礎データここまで -->
+
+				<!-- 対象指標一覧（ハイライト再掲） -->
+				<section data-background-color="white">
+					<p style="font-size: 22pt;">回帰係数が高い15指標（和集合）→ 5指標</p>
+					<table style="font-size: 0.4em; width: 80%; margin: 0 auto; border-collapse: collapse;">
+						<tr>
+							<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">分野</th>
+							<th style="padding: 5px; border: 1px solid #000; background-color: gray; text-align: center;">指標</th>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #917099;" rowspan="2">経済</td>
+							<td style="padding: 5px; border: 1px solid #000; background-color:rgba(145, 112, 153, 0.5); color:#f00; font-weight: bold;">賃金水準</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(145, 112, 153, 0.5);">政治・経済・商機のリスクの低さ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #738cac;" rowspan="2">研究・開発</td>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(115, 140, 172, 0.5); color:#f00; font-weight: bold;">留学生数</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(115, 140, 172, 0.5); color:#f00; font-weight: bold;">スタートアップ数</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #de819a;" rowspan="6">文化・交流</td>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">アート市場規模</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5); color:#f00; font-weight: bold;">観光地の充実度</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">スタジアム数</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">ホテル客室数</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">ハイクラスホテル客室数</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(222, 129, 154, 0.5);">買い物の魅力</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #71c2de;" rowspan="2">居住</td>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(113,194,222,0.5);">メンタルヘルス水準</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(113,194,222,0.5);">小売店舗の多さ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #9cb866;" rowspan="1">環境</td>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(156,184,102,0.5);">都市空間の清潔さ</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: #eeaa3d;" rowspan="2">交通・アクセス</td>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(238,170,61,0.5); color:#f00; font-weight: bold;">国際線直行便就航都市数</td>
+						</tr>
+						<tr>
+							<td style="padding: 5px; border: 1px solid #000; background-color: rgba(238,170,61,0.5);">自動車の移動速度</td>
+						</tr>
+					</table>
+				</section>
+
+				<!-- 回帰分析結果の指標データ -->
+				<!-- Chart.js: 賃金水準 -->
+				<section>
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/wage_level/wage_level.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: Numbeo</p>
+					</section>
+				</section>
+				
+				<!-- 留学生数および大学 -->
+				<section>
+					 <!-- 留学生数 -->
+						 <section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+							 <iframe class="stretch" data-src="./mapbox/intl_students/intl_students.html" data-preload frameborder="0"
+								 allowfullscreen></iframe>
+						 </section>
+	 
+					 <!-- 大学・短大 -->
+						 <section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+							 <iframe class="stretch" data-src="./mapbox/universities/universities.html" data-preload frameborder="0"
+								 allowfullscreen></iframe>
+						 </section>
+				 </section>
+				
+				<!-- スタートアップ -->
+				<section>
+					<!-- Chart.js: startups_GPCI -->
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/startups/startups_gpci.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: Crunchbase</p>
+					</section>
+					<!-- スタートアップ -->
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/startups/startups.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+					</section>
+				</section>
+				
+				<!-- 観光地の充実度 -->
+				<section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/tourist_attractions/tourist_attractions.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+				</section>
+
+				<!-- 
+				ハイクラスホテル客室数
+				<section>
+					<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+						<iframe class="stretch" data-src="./mapbox/high_class_hotels/high_class_hotels.html" data-preload frameborder="0"
+							allowfullscreen></iframe>
+					</section>
+				</section>
+
+				Chart.js: 買い物の魅力
+				<section>
+					<section data-background-color="rgb(255, 255, 255)">
+						<iframe class="stretch center-vertically" data-src="./chartjs/shopping/shopping.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+						<p style="font-size: small;">出典: TripAdvisor, Residents survey</p>
+					</section>
+				</section>
+				-->
+
+				<!-- 国際線ネットワーク -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./mapbox/flight_network/flight_network.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>
+
+				<!-- ======== GPCIシミュレーター ======== 
+				<section data-fullscreen="true" data-background-color="rgb(255, 255, 255)" data-transition="fade-in" data-transition-speed="slow">
+					<iframe class="stretch" data-src="./gpci-simulator/gpci-simulator.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>
+				-->
+
+				<!-- 都市の魅力 -->
+				<section data-background-color="#D9D9D9">
+					<img data-src="./img/総合力とアイデンティティ.png">
+				</section>	
+			
+				<!-- Chart.js: GPCI レーダーチャート -->
+				<section>
+					<section data-background-color="rgb(255, 255, 255)" style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+						<iframe style="border: 0; width: 70%; height: 60%;" data-src="./chartjs/gpci_radar/gpci_radar.html" data-preload allowfullscreen></iframe>
+						<p style="font-size: small; text-align: center;">出典: 世界の都市総合力ランキング</p>
+					</section>
+				</section>
+				
+				<!-- City Perception Survey (世界) -->
+				<section data-fullscreen="true" data-background-color="rgb(255, 255, 255)">
+					<iframe class="stretch" data-src="https://mori-m-foundation.or.jp/ius/cps/City_JP.shtml?citycode=PAR" data-preload frameborder="0"
+					allowfullscreen></iframe>
+				</section>
+
+				<!-- 日本の都市特性評価（JPC） -->
+				<section data-background-color="black">
+					<div style="display: flex; justify-content: center; gap: 20px;">
+						<div>
+							<img data-src="./img/jpc2024_cover.jpg" width="450">
+						</div>
+					</div>
+				</section>
+
+				<!-- Chart.js: JPC レーダーチャート -->
+				<section>
+					<section data-background-color="rgb(255, 255, 255)" style="display: flex; justify-content: center; align-items: center; height: 100vh; flex-direction: column;">
+						<iframe style="border: 0; width: 70%; height: 60%;" data-src="./chartjs/jpc_radar/jpc_radar.html" data-preload allowfullscreen></iframe>
+						<p style="font-size: small; text-align: center;">出典: 日本の都市特性評価</p>
+					</section>
+				</section>
+				
+				<!-- 都市のイメージ調査 (日本) -->
+				<section data-fullscreen="true" data-background-color="rgb(255, 255, 255)">
+					<iframe class="stretch" data-src="https://mori-m-foundation.or.jp/ius/cps-jpc/index.shtml" data-preload frameborder="0"
+					allowfullscreen></iframe>
+				</section>
+
+				<!-- Tokyo City Flyover -->
+				<section data-background-color="rgb(0, 0, 0)" style="position: relative;">
+					<section data-fullscreen="true">
+						<h1 style="position: absolute; top: 50px; left: 60px; color: white; font-size: 50px; z-index: 1;">都市の未来</h1>
+						<video data-src="./video/tokyo_city_flyover.mp4"></video>
+					</section>
+				</section>
+				
+				<!-- タイムマシン -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./mapbox/timemachine/timemachine.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>
+				
+				<!-- 渋谷区産業・観光グランド・デザイン -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./turn.js/demos/magazine/shibuya.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>
+			
+				<!-- 沖縄観光グランドデザイン (冊子) -->
+				<section data-fullscreen="true" data-background-color="rgb(0, 0, 0)">
+					<iframe class="stretch" data-src="./turn.js/demos/magazine/okinawa.html" data-preload frameborder="0"
+						allowfullscreen></iframe>
+				</section>
+
+				<!-- 沖縄観光グランドデザイン (VR映像) -->
+				<section data-background-color="rgb(0, 0, 0)" style="position: relative;">
+					<section data-fullscreen="true">
+						<video data-src="./video/kokusai-dori.mp4"></video>
+					</section>
+				</section>
+
+				<!-- 産官学連携 -->
+				<section data-fullscreen="true"  data-background-color="#D9D9D9">
+					<img data-src="./img/産官学連携.png">
+				</section>	
+				
+				<!-- 提言 -->
+				<section>
+					<section>
+						<p>Beyond Functionalism</p>
+						<p style="font-size: 30px;">機能主義を超えた都市を創造する</p>
+						<ul style="font-size: 25px;">
+							<li class="fragment">高度経済成長期以降の思想 → 「機械」をモデルとする思考。</li>
+							<li class="fragment">規格化され、世界中どこでも同じように機能することが求められる。</li>
+							<li class="fragment">Globalization -> Standardization</li>
+							<li class="fragment">しかし、機械 ≠ 建築。</li>
+							<li class="fragment">機械：普遍性、大量生産性 ⇔ 建築：個別性、一回性、人々を内包する</li>					
+							<li class="fragment">その土地で人々が行う「営み」も個別性と一回性を有する。</li>
+							<li class="fragment">建築や営みのうち文化的価値の高いものが、その土地の有形・無形の価値となる。</li>
+							<li class="fragment">地域のコアバリューを見つけ出し、そのポテンシャルを活かした街づくりを行い、エリアのアイデンティティを高める。</li>
+							<li class="fragment">それらの文化的価値の高いエリアを繋ぐことで、東京全体が「生きたミュージアム」のようになる。</li>
+							<li class="fragment">それが、機能主義の先にある、成熟時代にふさわしい東京の姿である。</li>						
+						</ul>
+					</section>
+				</section>
+				
+				<section>
+					<img data-src="./img/mmf_logo.png" style="width: 400px;">
+				</section>			
+				
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/zoom/zoom.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<!-- Fullscreen plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/fullscreen/plugin.js"></script>
+		<!-- Latex -->
+		<script src="plugin/math/math.js"></script>
+
+
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				autoPlayMedia: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealFullscreen, RevealMath.KaTeX, RevealZoom ]
+			});
+		</script>
+	</body>
+</html>
